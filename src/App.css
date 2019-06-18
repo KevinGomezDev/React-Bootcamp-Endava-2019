@@ -1,11 +1,65 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 .app-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Lato', sans-serif;
+}
+
+.app-container div {
+  overflow-y: scroll;
+}
+
+.avatar {
+  padding: 5px;
   display: flex;
 }
 
-.recipe-container {
-  border: 1px solid black;
+.section {
+  display: flex;
+  border-right: 1px solid #34495e;
+  flex-direction: column;
+}
+
+.detail-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.section-header {
+  border-bottom: 1px solid #34495e;
+  text-align: center;
+}
+
+.section-header h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav {
+  background: #c0392b;
+  box-shadow: -19px -19px 2px 20px #8e8e8e;
+  border-bottom: .5px solid #1f1f1f;
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+  height: 30px;
+}
+
+.recipe-container, .restaurant-container {
+  border: 1px solid #34495e;
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
-  width: 200px;
+  width: 300px;
 }

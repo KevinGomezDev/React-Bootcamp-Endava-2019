@@ -1,11 +1,11 @@
 import React from 'react';
 
 function Recipe (props) {
-  return <div className='recipe-container'>
-    <h1>{props.title}</h1>
+  return <article className='recipe-container'>
+    <h3>{props.title}</h3>
     <p>{props.desc}</p>
     <button>Detalle de la receta</button>
-  </div>
+  </article>
 }
 
 export default Recipe;

@@ -1,11 +1,11 @@
 import React from 'react';
 
 function Restaurant (props) {
-  return <ul>
-    <li>{props.name}</li>
-    <li>{props.schedule}</li>
-    <li>{props.location}</li>
-  </ul>
+  return <article className='restaurant-container'>
+    <h3>{props.name}</h3>
+    <p>{props.schedule}</p>
+    <p>{props.location}</p>
+  </article>
 }
 
 export default Restaurant;
