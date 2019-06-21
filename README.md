@@ -1,5 +1,4 @@
-# React Bootcamp 2019
-
+# React Bootcamp 2019 [![react](https://www.iconfinder.com/icons/1174949/download/png/32)](https://reactjs.org/)
 ## Session One
 ### What's React, Reconciliation, JSX, Components & Props
   1. Generate a basic project structure using [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started).
