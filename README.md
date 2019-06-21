@@ -31,7 +31,8 @@
   2. Get the scroll position as a snapshot and pass it to the next life cycle method.
   3. Create an "Oops" page to prevent the customer from seeing a blank page in error cases.
 
-  * Concepts: 
+  * Concepts:
+    * Handling DOM Events
     * `shouldComponentUpdate()`
     * static `getDerivedStateFromProps()`
     * `getSnapshotBeforeUpdate()`
