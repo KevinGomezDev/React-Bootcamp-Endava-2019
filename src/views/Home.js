@@ -1,7 +1,9 @@
 import React from 'react';
 import Layout from '../components/Layout';
 
-class App extends React.Component {
+const DEBUG_MODE = false
+
+class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -9,11 +11,11 @@ class App extends React.Component {
       longitude:  null,
       error: null,
     }
-    console.log('constructor')
+    DEBUG_MODE && console.log('constructor')
   }
 
   componentDidMount() {
-    console.log('componentDidMount')
+    DEBUG_MODE && console.log('componentDidMount')
     window.navigator.geolocation.getCurrentPosition((location) => {
       window.componentPosition = { 
         latitude: location.coords.latitude,
@@ -27,7 +29,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('componentDidUpdate')
+    DEBUG_MODE && console.log('componentDidUpdate')
     window.document.title = `latitude: ${this.state.latitude}`
   }
 
@@ -36,7 +38,7 @@ class App extends React.Component {
   }
 
   render () {
-    console.log('render')
+    DEBUG_MODE && console.log('render')
     const { latitude, longitude, error } = this.state
     return (latitude && longitude)
      ? <Layout latitude={latitude} longitude={longitude} />
@@ -44,6 +46,6 @@ class App extends React.Component {
   }
 }
 
-App.displayName = 'MyApp'
+Home.displayName = 'MyHome'
 
-export default App
+export default Home

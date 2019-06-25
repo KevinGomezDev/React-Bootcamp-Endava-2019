@@ -16,6 +16,7 @@ html {
 
 .app-container div {
   overflow-y: scroll;
+  height: 100%;
 }
 
 .avatar {
@@ -34,6 +35,12 @@ html {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+
+.geo-notice span {
+  font-weight: bold;
+  padding-right: 10px;
 }
 
 .section-header {
