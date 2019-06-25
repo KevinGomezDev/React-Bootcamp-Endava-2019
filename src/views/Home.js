@@ -18,11 +18,11 @@ class Home extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if(state.latitude === 35.689487) {
+    /*if(state.latitude === 35.689487) {
       return {
         favouriteRestaurants: [1],
       }
-    }
+    }*/
     return null
   }
 
