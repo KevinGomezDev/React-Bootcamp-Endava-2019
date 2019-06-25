@@ -10,12 +10,46 @@ class Home extends React.Component {
       latitude: null,
       longitude:  null,
       error: null,
+      favouriteRestaurants: [],
     }
-    DEBUG_MODE && console.log('constructor')
+    if(DEBUG_MODE) {
+      console.log('constructor')
+    }
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if(state.latitude === 35.689487) {
+      return {
+        favouriteRestaurants: [1],
+      }
+    }
+    return null
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    if(this.state.favouriteRestaurants !== prevState.favouriteRestaurants) {
+      return 'Son diferentes'
+    }
+    return null
+  }
+
+  toggleFavourite = (id) => {
+    const { favouriteRestaurants } = this.state
+    if(favouriteRestaurants.includes(id)) {
+      const filteredRestaurants = favouriteRestaurants.filter((restaurantId) => restaurantId !== id)
+      this.setState({ favouriteRestaurants: filteredRestaurants })
+    } else {
+      /*const newFavourites = this.state.favouriteRestaurants
+      newFavourites.push(id)*/
+      const newFavourites = [...this.state.favouriteRestaurants, id]
+      this.setState({ favouriteRestaurants: newFavourites })
+    }
   }
 
   componentDidMount() {
-    DEBUG_MODE && console.log('componentDidMount')
+    if (DEBUG_MODE) {
+      console.log('componentDidMount')
+    }
     window.navigator.geolocation.getCurrentPosition((location) => {
       window.componentPosition = { 
         latitude: location.coords.latitude,
@@ -29,7 +63,10 @@ class Home extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    DEBUG_MODE && console.log('componentDidUpdate')
+    if (DEBUG_MODE) {
+      console.log('componentDidUpdate')
+    }
+    console.log(snapshot)
     window.document.title = `latitude: ${this.state.latitude}`
   }
 
@@ -38,14 +75,18 @@ class Home extends React.Component {
   }
 
   render () {
-    DEBUG_MODE && console.log('render')
-    const { latitude, longitude, error } = this.state
-    return (latitude && longitude)
-     ? <Layout latitude={latitude} longitude={longitude} />
+    if (DEBUG_MODE) {
+      console.log('render')
+    }
+    const { latitude, longitude, error, favouriteRestaurants } = this.state
+    return (!error)
+     ? <Layout 
+      latitude={latitude}
+      longitude={longitude}
+      favouriteRestaurants={favouriteRestaurants} 
+      toggleFavourite={this.toggleFavourite} />
      : <div>{error}</div>
   }
 }
-
-Home.displayName = 'MyHome'
 
 export default Home

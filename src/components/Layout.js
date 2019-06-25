@@ -33,6 +33,8 @@ function Layout (props) {
           {restaurants.map((restaurant) => {
             return <Restaurant
               key={restaurant.id}
+              isFavourite={props.favouriteRestaurants.includes(restaurant.id)}
+              toggleFavourite={props.toggleFavourite}
               {...restaurant}
               />
           })}

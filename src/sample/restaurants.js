@@ -7,10 +7,10 @@ export default [{
   id: 2,
   name: 'Asados doña rosa',
   schedule: 'M-F: 10-8',
-  location: 'Medellin',
+  location: 'Bogota',
 },{
   id: 3,
   name: 'Pasta de la 80',
   schedule: 'M-F: 10-8',
-  location: 'Medellin',
+  location: 'Cali',
 }]

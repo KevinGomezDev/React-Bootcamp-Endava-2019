@@ -1,10 +1,13 @@
 import React from 'react';
 
-function Restaurant (props) {
-  return <article className='restaurant-container'>
-    <h3>{props.name}</h3>
-    <p>{props.schedule}</p>
-    <p>{props.location}</p>
+function Restaurant ({ id, name, schedule, location, toggleFavourite, isFavourite}) {
+    return <article className='restaurant-container'>
+    <h3>{name}</h3>
+    <p>{schedule}</p>
+    <p>{location}</p>
+    <button onClick={(e) => toggleFavourite(id)}>
+      <i className={`fa${isFavourite ? 's' : 'r'} fa-star`}></i>
+    </button>
   </article>
 }
 
