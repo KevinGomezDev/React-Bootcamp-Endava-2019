@@ -1,5 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import { getCategories } from '../api/categories'
+import { getRestaurantsByLocation } from '../api/cities'
 
 const DEBUG_MODE = false
 
@@ -11,6 +13,7 @@ class Home extends React.Component {
       longitude:  null,
       error: null,
       favouriteRestaurants: [],
+      categories: [],
     }
     if(DEBUG_MODE) {
       console.log('constructor')
@@ -45,11 +48,8 @@ class Home extends React.Component {
       this.setState({ favouriteRestaurants: newFavourites })
     }
   }
-
-  componentDidMount() {
-    if (DEBUG_MODE) {
-      console.log('componentDidMount')
-    }
+  
+  getGeolocation () {
     window.navigator.geolocation.getCurrentPosition((location) => {
       window.componentPosition = { 
         latitude: location.coords.latitude,
@@ -58,8 +58,18 @@ class Home extends React.Component {
       this.setState({ 
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
-       })
+       }, 
+        () => getRestaurantsByLocation(this.state.latitude, this.state.longitude)
+       .then((restaurants) => console.log(restaurants)))
     }, (error) => this.setState({ error: error.message }))
+  }
+
+  componentDidMount() {
+    if (DEBUG_MODE) {
+      console.log('componentDidMount')
+    }
+    this.getGeolocation()
+    getCategories().then((categories) => this.setState({ categories }))
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -78,9 +88,10 @@ class Home extends React.Component {
     if (DEBUG_MODE) {
       console.log('render')
     }
-    const { latitude, longitude, error, favouriteRestaurants } = this.state
+    const { categories, latitude, longitude, error, favouriteRestaurants } = this.state
     return (!error)
-     ? <Layout 
+     ? <Layout
+      categories={categories}
       latitude={latitude}
       longitude={longitude}
       favouriteRestaurants={favouriteRestaurants} 

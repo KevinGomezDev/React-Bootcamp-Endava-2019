@@ -5,6 +5,7 @@ import restaurants from '../sample/restaurants'
 
 //Components
 import ErrorBoundary from './ErrorBoundary'
+import Category from './Category'
 import Recipe from './Recipe'
 import Restaurant from './Restaurant'
 import Nav from './Nav'
@@ -38,6 +39,21 @@ function Layout (props) {
               isFavourite={props.favouriteRestaurants.includes(restaurant.id)}
               toggleFavourite={props.toggleFavourite}
             />
+          )}
+        </div>
+      </section>
+      <section className='section'>
+        <header className='section-header'>
+          <h2>Categorias</h2>
+        </header>
+        <div>
+          {props.categories.map((category) => {
+            console.log(category)
+              return <Category
+                {...category}
+                key={category.id}
+              />
+          }
           )}
         </div>
       </section>
