@@ -65,8 +65,8 @@ class Home extends React.Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (DEBUG_MODE) {
       console.log('componentDidUpdate')
+      console.log(snapshot)
     }
-    console.log(snapshot)
     window.document.title = `latitude: ${this.state.latitude}`
   }
 

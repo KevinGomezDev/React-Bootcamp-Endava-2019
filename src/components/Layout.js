@@ -1,15 +1,16 @@
 import React from 'react'
 //Data
-import recipes from '../sample/recipes';
-import restaurants from '../sample/restaurants';
+import recipes from '../sample/recipes'
+import restaurants from '../sample/restaurants'
 
 //Components
-import Recipe from './Recipe';
-import Restaurant from './Restaurant';
-import Nav from './Nav';
+import ErrorBoundary from './ErrorBoundary'
+import Recipe from './Recipe'
+import Restaurant from './Restaurant'
+import Nav from './Nav'
 
 function Layout (props) {
-  return <React.Fragment>
+  return <ErrorBoundary>
         <Nav latitude={props.latitude} longitude={props.longitude} />
         <main className='app-container'>
       <section className='section'>
@@ -30,21 +31,21 @@ function Layout (props) {
           <h2>Restaurantes</h2>
         </header>
         <div>
-          {restaurants.map((restaurant) => {
-            return <Restaurant
+          {restaurants.map((restaurant) =>
+            <Restaurant
+              {...restaurant}
               key={restaurant.id}
               isFavourite={props.favouriteRestaurants.includes(restaurant.id)}
               toggleFavourite={props.toggleFavourite}
-              {...restaurant}
-              />
-          })}
+            />
+          )}
         </div>
       </section>
       <section className='detail-section'>
         Detalle
       </section>
     </main>
-  </React.Fragment>
+  </ErrorBoundary>
 }
 
 Layout.defaultProps = {
