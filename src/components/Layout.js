@@ -6,6 +6,7 @@ import restaurants from '../sample/restaurants'
 //Components
 import ErrorBoundary from './ErrorBoundary'
 import Category from './Category'
+import CategoryForm from './CategoryForm'
 import Recipe from './Recipe'
 import Restaurant from './Restaurant'
 import Nav from './Nav'
@@ -58,7 +59,7 @@ function Layout (props) {
         </div>
       </section>
       <section className='detail-section'>
-        Detalle
+        <CategoryForm />
       </section>
     </main>
   </ErrorBoundary>
