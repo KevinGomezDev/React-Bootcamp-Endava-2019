@@ -1,13 +1,23 @@
-import React from 'react';
+import React from 'react'
+import { Link } from "react-router-dom";
 
-function Restaurant ({ id, name, schedule, location, toggleFavourite, isFavourite}) {
+function Restaurant (props) {
+  const newlocation = {
+    pathname: `/restaurant/${props.id}`,
+    state: { 
+      id: props.id,
+      name: props.name,
+      cuisines: props.cuisines
+    }
+  }
     return <article className='restaurant-container'>
-    <h3>{name}</h3>
-    <p>{schedule}</p>
-    <p>{location}</p>
-    <button onClick={(e) => toggleFavourite(id)}>
-      <i className={`fa${isFavourite ? 's' : 'r'} fa-star`}></i>
+    <h3>{props.id}</h3>
+    <h3>{props.name}</h3>
+    <h3>{props.cuisines}</h3>
+    <button onClick={(e) => props.toggleFavourite(props.id)}>
+      <i className={`fa${props.isFavourite ? 's' : 'r'} fa-star`}></i>
     </button>
+    <Link to={newlocation}>Detail</Link>
   </article>
 }
 

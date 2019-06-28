@@ -1,5 +1,4 @@
 import React from 'react';
-
 class Avatar extends React.Component {
   render() {
     let { imgSrc, name, age } = this.props

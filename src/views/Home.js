@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { getCategories } from '../api/categories'
-import { getRestaurantsByLocation } from '../api/cities'
+import { getRestaurantsByLocation } from '../api/restaurants'
 
 const DEBUG_MODE = false
 
@@ -14,6 +14,7 @@ class Home extends React.Component {
       error: null,
       favouriteRestaurants: [],
       categories: [],
+      restaurants: [],
     }
     if(DEBUG_MODE) {
       console.log('constructor')
@@ -60,7 +61,7 @@ class Home extends React.Component {
         longitude: location.coords.longitude,
        }, 
         () => getRestaurantsByLocation(this.state.latitude, this.state.longitude)
-       .then((restaurants) => console.log(restaurants)))
+       .then((restaurants) => this.setState({ restaurants })))
     }, (error) => this.setState({ error: error.message }))
   }
 
@@ -88,10 +89,11 @@ class Home extends React.Component {
     if (DEBUG_MODE) {
       console.log('render')
     }
-    const { categories, latitude, longitude, error, favouriteRestaurants } = this.state
+    const { categories, latitude, longitude, error, restaurants, favouriteRestaurants } = this.state
     return (!error)
      ? <Layout
       categories={categories}
+      restaurants={restaurants}
       latitude={latitude}
       longitude={longitude}
       favouriteRestaurants={favouriteRestaurants} 

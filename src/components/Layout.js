@@ -1,7 +1,6 @@
 import React from 'react'
 //Data
 import recipes from '../sample/recipes'
-import restaurants from '../sample/restaurants'
 
 //Components
 import ErrorBoundary from './ErrorBoundary'
@@ -33,7 +32,7 @@ function Layout (props) {
           <h2>Restaurantes</h2>
         </header>
         <div>
-          {restaurants.map((restaurant) =>
+          {props.restaurants.map((restaurant) =>
             <Restaurant
               {...restaurant}
               key={restaurant.id}
