@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { getCategories } from '../api/categories'
-import { getRestaurantsByLocation } from '../api/restaurants'
 
 const DEBUG_MODE = false
 
@@ -12,9 +11,7 @@ class Home extends React.Component {
       latitude: null,
       longitude:  null,
       error: null,
-      favouriteRestaurants: [],
       categories: [],
-      restaurants: [],
     }
     if(DEBUG_MODE) {
       console.log('constructor')
@@ -36,33 +33,19 @@ class Home extends React.Component {
     }
     return null
   }
-
-  toggleFavourite = (id) => {
-    const { favouriteRestaurants } = this.state
-    if(favouriteRestaurants.includes(id)) {
-      const filteredRestaurants = favouriteRestaurants.filter((restaurantId) => restaurantId !== id)
-      this.setState({ favouriteRestaurants: filteredRestaurants })
-    } else {
-      /*const newFavourites = this.state.favouriteRestaurants
-      newFavourites.push(id)*/
-      const newFavourites = [...this.state.favouriteRestaurants, id]
-      this.setState({ favouriteRestaurants: newFavourites })
-    }
-  }
   
   getGeolocation () {
-    window.navigator.geolocation.getCurrentPosition((location) => {
-      window.componentPosition = { 
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-       }
-      this.setState({ 
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-       }, 
-        () => getRestaurantsByLocation(this.state.latitude, this.state.longitude)
-       .then((restaurants) => this.setState({ restaurants })))
-    }, (error) => this.setState({ error: error.message }))
+    const setLocation = (position) => {
+      const { latitude, longitude } = position.coords
+      if(latitude && longitude) {
+        // Adding userPosition to Window to execute ComponentWillUnmount Example
+        window.componentPosition = { latitude, longitude }
+        this.setState(() => ({ latitude, longitude }))
+      }
+    }
+    const setLocationError = (error) => this.setState({ error: error.message })
+    //Get User Location from browser Geolocation sensor
+    window.navigator.geolocation.getCurrentPosition(setLocation, setLocationError)
   }
 
   componentDidMount() {
@@ -86,18 +69,13 @@ class Home extends React.Component {
   }
 
   render () {
-    if (DEBUG_MODE) {
-      console.log('render')
-    }
-    const { categories, latitude, longitude, error, restaurants, favouriteRestaurants } = this.state
+    const { categories, latitude, longitude, error } = this.state
     return (!error)
      ? <Layout
-      categories={categories}
-      restaurants={restaurants}
-      latitude={latitude}
-      longitude={longitude}
-      favouriteRestaurants={favouriteRestaurants} 
-      toggleFavourite={this.toggleFavourite} />
+        categories={categories}
+        latitude={latitude}
+        longitude={longitude}
+      />
      : <div>{error}</div>
   }
 }

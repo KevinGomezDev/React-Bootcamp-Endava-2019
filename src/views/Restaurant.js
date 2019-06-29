@@ -1,5 +1,5 @@
 import React from 'react'
-import { getRestaurant } from '../api/restaurants'
+//import { getRestaurant } from '../api/restaurants'
 
 class Restaurant extends React.Component {
   constructor(props) {

@@ -53,6 +53,10 @@ html {
   padding: 0;
 }
 
+.section-content {
+  min-width: 300px;
+}
+
 .main-nav {
   background: #c0392b;
   box-shadow: -19px -19px 2px 20px #8e8e8e;
@@ -70,4 +74,12 @@ html {
   padding: 10px;
   margin: 10px;
   width: 300px;
+}
+
+.loader {
+  align-items: center;
+  color: #c0392b;
+  display: flex;
+  font-size: 50px;
+  justify-content: center;
 }

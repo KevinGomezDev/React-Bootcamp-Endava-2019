@@ -7,7 +7,7 @@ import ErrorBoundary from './ErrorBoundary'
 import Category from './Category'
 import CategoryForm from './CategoryForm'
 import Recipe from './Recipe'
-import Restaurant from './Restaurant'
+import Restaurants from './Restaurants'
 import Nav from './Nav'
 
 function Layout (props) {
@@ -18,7 +18,7 @@ function Layout (props) {
         <header className='section-header'>
           <h2>Menus</h2>
         </header>
-        <div>
+        <div className='section-content'>
           {recipes.map((recipe) => {
             return <Recipe
               key={recipe.id}
@@ -31,29 +31,22 @@ function Layout (props) {
         <header className='section-header'>
           <h2>Restaurantes</h2>
         </header>
-        <div>
-          {props.restaurants.map((restaurant) =>
-            <Restaurant
-              {...restaurant}
-              key={restaurant.id}
-              isFavourite={props.favouriteRestaurants.includes(restaurant.id)}
-              toggleFavourite={props.toggleFavourite}
-            />
-          )}
+        <div className='section-content'>
+          {(props.latitude && props.longitude) 
+            && <Restaurants latitude={props.latitude} longitude={props.longitude} />
+          }
         </div>
       </section>
       <section className='section'>
         <header className='section-header'>
           <h2>Categorias</h2>
         </header>
-        <div>
+        <div className='section-content'>
           {props.categories.map((category) => {
-            console.log(category)
               return <Category
                 {...category}
                 key={category.id}
-              />
-          }
+              />}
           )}
         </div>
       </section>

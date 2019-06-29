@@ -9,7 +9,6 @@ class Nav extends React.PureComponent {
   }*/
   
   render() {
-    console.log('render')
     return <nav className='main-nav'>
     <div className='geo-notice'>
       <span>Latitude: {this.props.latitude}</span>
