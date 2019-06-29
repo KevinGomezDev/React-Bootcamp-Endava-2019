@@ -25,5 +25,4 @@ export const getRestaurantsByLocation = (lat, lon) =>
       lat,
       lon
     }
-  })
-  .then(({ data }) => massage(data.restaurants))
+  }).then(({ data }) => massage(data.restaurants))

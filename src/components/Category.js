@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function Category ({ id, name }) {
     return <article className='restaurant-container'>
@@ -7,4 +7,4 @@ function Category ({ id, name }) {
   </article>
 }
 
-export default Category;
+export default Category

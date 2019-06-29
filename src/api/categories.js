@@ -6,12 +6,15 @@ const massage = (categories) =>
     name: categories.name,
   }))
 
-/*class Category {
-  constructor(id, name) {
-    this.id = id
-    this.name = name
+/* 
+-- You are also able to use classes and instances to massage your data ---
+  class Category {
+    constructor(id, name) {
+      this.id = id
+      this.name = name
+    }
   }
-}*/
+*/
 
 export const getCategories = () =>
 axios.get('https://developers.zomato.com/api/v2.1/categories', {

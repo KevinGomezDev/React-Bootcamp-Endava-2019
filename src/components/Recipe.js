@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function Recipe (props) {
   return <article className='recipe-container'>
@@ -8,4 +8,4 @@ function Recipe (props) {
   </article>
 }
 
-export default Recipe;
+export default Recipe

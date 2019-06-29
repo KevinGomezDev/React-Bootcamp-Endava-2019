@@ -62,4 +62,4 @@ Layout.defaultProps = {
   longitude: '75.5812'
 }
 
-export default Layout;
+export default Layout

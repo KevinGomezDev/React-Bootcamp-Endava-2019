@@ -1,5 +1,5 @@
-import React from 'react';
-import Avatar from './Avatar';
+import React from 'react'
+import Avatar from './Avatar'
 
 class Nav extends React.PureComponent {
   /*shouldComponentUpdate(nextProps, nextState) {
@@ -19,4 +19,4 @@ class Nav extends React.PureComponent {
   }
 }
 
-export default Nav;
+export default Nav

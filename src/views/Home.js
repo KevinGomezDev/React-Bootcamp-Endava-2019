@@ -1,5 +1,5 @@
-import React from 'react';
-import Layout from '../components/Layout';
+import React from 'react'
+import Layout from '../components/Layout'
 import { getCategories } from '../api/categories'
 
 const DEBUG_MODE = false
