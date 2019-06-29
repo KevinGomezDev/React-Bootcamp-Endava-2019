@@ -16,7 +16,7 @@ function Layout (props) {
         <main className='app-container'>
       <section className='section'>
         <header className='section-header'>
-          <h2>Menus</h2>
+          <h2>Recipes</h2>
         </header>
         <div className='section-content'>
           {recipes.map((recipe) => {
@@ -29,7 +29,7 @@ function Layout (props) {
       </section>
       <section className='section'>
         <header className='section-header'>
-          <h2>Restaurantes</h2>
+          <h2>Restaurants</h2>
         </header>
         <div className='section-content'>
           {(props.latitude && props.longitude) 
@@ -39,7 +39,7 @@ function Layout (props) {
       </section>
       <section className='section'>
         <header className='section-header'>
-          <h2>Categorias</h2>
+          <h2>Categories</h2>
         </header>
         <div className='section-content'>
           {props.categories.map((category) => {
