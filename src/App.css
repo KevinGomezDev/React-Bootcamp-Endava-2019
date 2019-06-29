@@ -16,12 +16,20 @@ html {
 
 .app-container div {
   overflow-y: scroll;
-  height: 100%;
+  height: 93%;
 }
 
 .avatar {
   padding: 5px;
   display: flex;
+}
+
+.favourite-star {
+  border: 0;
+  font-size: 20px;
+  color: #ffd22e;
+  cursor: pointer;
+  outline: 0;
 }
 
 .section {
@@ -69,11 +77,27 @@ html {
 }
 
 .recipe-container, .restaurant-container {
-  border: 1px solid #34495e;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 2px;
+  padding: 20px;
+  box-shadow: 0px 1px 5px 1px #bdbdbd;
   margin: 10px;
   width: 300px;
+}
+
+.restaurant-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.restaurant-detail-button {
+  background: #c0392b;
+  border-radius: 2px;
+  color: #fff;
+  display: block;
+  padding: 5px 0;
+  text-align: center;
+  text-decoration: none;
+  width: 50%;
 }
 
 .loader {

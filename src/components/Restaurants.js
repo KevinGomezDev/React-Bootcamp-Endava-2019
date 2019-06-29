@@ -1,6 +1,6 @@
 import React from 'react'
 import { getRestaurantsByLocation } from '../api/restaurants'
-import Restaurant from './Restaurant'
+import RestaurantThumb from './RestaurantThumb'
 
 class Restaurants extends React.Component {
   state = {
@@ -48,7 +48,7 @@ class Restaurants extends React.Component {
       }
       {(restaurants.length > 0)
         && restaurants.map((restaurant) =>
-          <Restaurant
+          <RestaurantThumb
             {...restaurant}
             key={restaurant.id}
             isFavourite={favouriteRestaurants.includes(restaurant.id)}
