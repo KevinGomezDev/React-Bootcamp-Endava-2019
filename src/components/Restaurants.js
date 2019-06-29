@@ -46,6 +46,7 @@ class Restaurants extends React.Component {
           <i className="fas fa-spinner fa-pulse"></i>
         </div>
       }
+      {error && <div>{error}</div>}
       {(restaurants.length > 0)
         && restaurants.map((restaurant) =>
           <RestaurantThumb
@@ -55,7 +56,6 @@ class Restaurants extends React.Component {
             toggleFavourite={this.toggleFavourite}
           />)
       }
-      {error && <div>{error}</div>}
     </React.Fragment>
   }
 }

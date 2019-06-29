@@ -4,7 +4,7 @@ import recipes from '../sample/recipes'
 
 //Components
 import ErrorBoundary from './ErrorBoundary'
-import Category from './Category'
+import Categories from './Categories'
 import CategoryForm from './CategoryForm'
 import Recipe from './Recipe'
 import Restaurants from './Restaurants'
@@ -42,12 +42,7 @@ function Layout (props) {
           <h2>Categories</h2>
         </header>
         <div className='section-content'>
-          {props.categories.map((category) => {
-              return <Category
-                {...category}
-                key={category.id}
-              />}
-          )}
+          <Categories />
         </div>
       </section>
       <section className='detail-section'>

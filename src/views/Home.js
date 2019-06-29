@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import { getCategories } from '../api/categories'
 
 const DEBUG_MODE = false
 
@@ -11,7 +10,6 @@ class Home extends React.Component {
       latitude: null,
       longitude:  null,
       error: null,
-      categories: [],
     }
     if(DEBUG_MODE) {
       console.log('constructor')
@@ -34,7 +32,7 @@ class Home extends React.Component {
     return null
   }
   
-  getGeolocation () {
+  getGeolocation = () => {
     const setLocation = (position) => {
       const { latitude, longitude } = position.coords
       if(latitude && longitude) {
@@ -53,7 +51,6 @@ class Home extends React.Component {
       console.log('componentDidMount')
     }
     this.getGeolocation()
-    getCategories().then((categories) => this.setState({ categories }))
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -69,14 +66,10 @@ class Home extends React.Component {
   }
 
   render () {
-    const { categories, latitude, longitude, error } = this.state
-    return (!error)
-     ? <Layout
-        categories={categories}
-        latitude={latitude}
-        longitude={longitude}
-      />
-     : <div>{error}</div>
+    const { latitude, longitude, error } = this.state
+    return !error
+      ? <Layout latitude={latitude} longitude={longitude} />
+      : <div>{error}</div>
   }
 }
 
