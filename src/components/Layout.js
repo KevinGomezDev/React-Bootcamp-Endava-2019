@@ -12,7 +12,7 @@ import Nav from './Nav'
 
 function Layout (props) {
   return <ErrorBoundary>
-        <Nav latitude={props.latitude} longitude={props.longitude} />
+        <Nav />
         <main className='app-container'>
       <section className='section'>
         <header className='section-header'>

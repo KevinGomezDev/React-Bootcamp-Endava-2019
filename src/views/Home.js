@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import { GeoProvider } from '../enhancers/GeoProvider'
 
 const DEBUG_MODE = false
 
@@ -7,8 +8,6 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      latitude: null,
-      longitude:  null,
       error: null,
     }
     if(DEBUG_MODE) {
@@ -32,33 +31,13 @@ class Home extends React.Component {
     return null
   }
   
-  getGeolocation = () => {
-    const setLocation = (position) => {
-      const { latitude, longitude } = position.coords
-      if(latitude && longitude) {
-        // Adding userPosition to Window to execute ComponentWillUnmount Example
-        window.componentPosition = { latitude, longitude }
-        this.setState(() => ({ latitude, longitude }))
-      }
-    }
-    const setLocationError = (error) => this.setState({ error: error.message })
-    //Get User Location from browser Geolocation sensor
-    window.navigator.geolocation.getCurrentPosition(setLocation, setLocationError)
-  }
 
-  componentDidMount() {
-    if (DEBUG_MODE) {
-      console.log('componentDidMount')
-    }
-    this.getGeolocation()
-  }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (DEBUG_MODE) {
       console.log('componentDidUpdate')
       console.log(snapshot)
     }
-    window.document.title = `latitude: ${this.state.latitude}`
   }
 
   componentWillUnmount () {
@@ -66,9 +45,11 @@ class Home extends React.Component {
   }
 
   render () {
-    const { latitude, longitude, error } = this.state
+    const { error } = this.state
     return !error
-      ? <Layout latitude={latitude} longitude={longitude} />
+      ? <GeoProvider>
+            <Layout />
+        </GeoProvider>
       : <div>{error}</div>
   }
 }
