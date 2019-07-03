@@ -1,6 +1,7 @@
 import React from 'react'
 import { getRestaurantsByLocation } from '../api/restaurants'
 import RestaurantThumb from './RestaurantThumb'
+import withAuthentication from '../enhancers/withAuthentication'
 
 class Restaurants extends React.Component {
   state = {
@@ -60,4 +61,4 @@ class Restaurants extends React.Component {
   }
 }
 
-export default Restaurants
+export default withAuthentication(Restaurants)

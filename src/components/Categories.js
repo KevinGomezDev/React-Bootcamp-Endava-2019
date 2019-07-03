@@ -1,6 +1,6 @@
 import React from 'react'
 import { getCategories } from '../api/categories'
-
+import AuthRenderProp from '../enhancers/AuthRenderProp'
 import Category from './Category'
 
 class Categories extends React.Component {
@@ -19,7 +19,9 @@ class Categories extends React.Component {
 
   render() {
     const { loading, error, categories } = this.state
-    return <React.Fragment>
+    return <AuthRenderProp>
+    {({ username }) => <React.Fragment>
+      Username: {username}
       {loading 
         && <div className='loader'>
           <i className="fas fa-spinner fa-pulse"></i>
@@ -30,6 +32,8 @@ class Categories extends React.Component {
         <Category key={category.id} {...category} />
       )}
     </React.Fragment>
+    }
+    </AuthRenderProp>
   }
 }
 
