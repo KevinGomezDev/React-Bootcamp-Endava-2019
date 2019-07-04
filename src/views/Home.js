@@ -1,5 +1,5 @@
 import React from 'react'
-import Counter from '../components/Counter'
+import Counter from '../containers/Counter'
 import Layout from '../components/Layout'
 import { GeoProvider } from '../enhancers/GeoProvider'
 
