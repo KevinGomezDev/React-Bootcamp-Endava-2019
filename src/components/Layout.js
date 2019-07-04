@@ -7,7 +7,7 @@ import ErrorBoundary from './ErrorBoundary'
 import Categories from './Categories'
 import CategoryForm from './CategoryForm'
 import Recipe from './Recipe'
-import Restaurants from './Restaurants'
+import Restaurants from '../containers/Restaurants'
 import Nav from './Nav'
 
 function Layout (props) {

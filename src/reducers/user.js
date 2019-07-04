@@ -1,4 +1,6 @@
-export default (state = { users:[] }, action) => {
+import initialState from './initialState'
+
+export default (state = initialState.users, action) => {
   switch(action.type) {
     case 'CREATE_USER':
       return {
