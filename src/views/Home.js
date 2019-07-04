@@ -1,4 +1,5 @@
 import React from 'react'
+import Counter from '../components/Counter'
 import Layout from '../components/Layout'
 import { GeoProvider } from '../enhancers/GeoProvider'
 
@@ -48,6 +49,7 @@ class Home extends React.Component {
     const { error } = this.state
     return !error
       ? <GeoProvider>
+            <Counter />
             <Layout />
         </GeoProvider>
       : <div>{error}</div>
